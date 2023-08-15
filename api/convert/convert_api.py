@@ -1,19 +1,15 @@
-from main import app
 import requests
-
-
-
+from main import app
 @app.get('/api/get-currency')
-async def get_rate():
+async def currency_rate():
+    # подкючение к json или api ЦБ
     cb_api = requests.get('https://cbu.uz/ru/arkhiv-kursov-valyut/json/').json()
-    usd_rate = cb_api[0]['Rate']
+    # Получаем курс валют
+    usr_rate = cb_api[0]['Rate']
     eur_rate = cb_api[1]['Rate']
     rub_rate = cb_api[2]['Rate']
-
-    return {'status': 1, 'rates': {'USD': usd_rate,
+    return {'status': 1, 'rates': {'USD': usr_rate,
                                    'EUR': eur_rate,
-                                   'RUB': rub_rate}}
-
-
-
+                                   'RUB': rub_rate
+                                   }}
 

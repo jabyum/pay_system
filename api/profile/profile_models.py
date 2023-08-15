@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from datetime import datetime
 
 
+# Модель входных данных пользователя
 class UserDent(BaseModel):
     profile_photo: str
     name: str
@@ -11,10 +12,11 @@ class UserDent(BaseModel):
     city: str
     reg_date: datetime
 
+
+# Модель для карты ползователя
 class CardDent(BaseModel):
-    user_id: int
     card_number: int
-    card_holder: str
+    cardholder: str
     exp_date: int
-    card_name: str
     card_balance: float
+    card_name: str
