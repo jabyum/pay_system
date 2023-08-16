@@ -39,7 +39,7 @@ def add_card_user(user_id, card_number, exp_date, card_name):
 
     return "Карта добавлен"
 
-def user_id_informations(user_id):
+def user_id_informations(user_id: int):
     db = next(get_db())
 
     exact_user_info = db.query(User).filter_by(id=user_id).first()
@@ -50,7 +50,7 @@ def user_id_informations(user_id):
     return 'Ошибка в данных'
 
 
-def get_all_or_exact_card_db(card_id, user_id):
+def get_all_or_exact_card_db(card_id: int, user_id: int):
     db = next(get_db())
 
     if user_id == 0:
@@ -69,7 +69,7 @@ def get_all_or_exact_card_db(card_id, user_id):
         return {'status': 1, 'message': all_cards}
 
 
-def login(phone_number, password):
+def login(phone_number: str, password: str):
     db = next(get_db())
 
     exact_user_info = db.query(User).filter_by(phone_number=phone_number, password=password).first()

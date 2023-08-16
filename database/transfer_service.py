@@ -30,7 +30,7 @@ def money_transfer_db(card_from, card_to, amount, transaction_date):
 
 
 
-def get_card_history(user_id):
+def get_card_history(user_id: int):
     db = next(get_db())
 
     if user_id:
